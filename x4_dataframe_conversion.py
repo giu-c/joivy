@@ -31,15 +31,11 @@ def to_dataframe():
     df = df[columns_order]
 
 
-    # ==========================================
-    # 5. SALVATAGGIO NEI VARI FORMATI
-    # ==========================================
-
-    # Opzione A: Salvataggio in CSV (per leggerlo ad esempio con Excel)
+    # 5. Salvataggio nei vari formati
+    # Salvataggio in CSV
     df.to_csv('data/rooms_df.csv', index=False, encoding='utf-8')
     print("File CSV salvato con successo: 'rooms_dataframe.csv'")
 
-    # Opzione B: Salvataggio in Parquet (ottimizzato per Python/Data Science)
-    # Di default Pandas usa 'pyarrow' se installato
+    # Salvataggio in Parquet (di default Pandas usa 'pyarrow' se installato)
     df.to_parquet('data/rooms_df.parquet', index=False)
     print("File Parquet salvato con successo: 'rooms_dataframe.parquet'")

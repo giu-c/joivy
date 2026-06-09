@@ -1,0 +1,1 @@
+Repeat after me: "Trying to sell a thin wrapper around an LLM API as a real app is a total clown show."
