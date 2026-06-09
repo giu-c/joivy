@@ -27,6 +27,7 @@ def get_country_color_map(cities):
     Garantisce coerenza per nazione e massima distinzione tra i singoli centri.
     """
     colori_citta = {
+
         # ==========================================
         # 🇮🇹 ITALIA: Gruppo Verde & Terra (7 città)
         # ==========================================
@@ -36,7 +37,7 @@ def get_country_color_map(cities):
         "Roma": "#4E342E",         # Marrone Caffè scuro
         "Trento": "#8D6E63",       # Marrone Legno medio
         "Torino": "#D7CCC8",       # Beige/Tortora molto chiaro
-        "Firenze": "#109618",      # Verde Prato brillante
+        "Firenze": "#109618",      # Verde Prato brillante       
         
         # ==========================================
         # 🇫🇷 FRANCIA: Gruppo Blu, Azzurro e Rosa (6 città)
@@ -51,12 +52,12 @@ def get_country_color_map(cities):
         # ==========================================
         # 🇪🇸 SPAGNA: Arancione Brillante (1 città)
         # ==========================================
-        "Madrid": "#FF6D00",       # Arancione Zucca saturo (stacca totalmente dagli altri)
+        "Madrid": "#FF6D00",       # Arancione Zucca saturo
         
         # ==========================================
         # 🇵🇹 PORTOGALLO: Rosso Intenso (1 città)
         # ==========================================
-        "Lisbona": "#D50000"       # Rosso Fuoco vivido (stacca nettamente da Italia e Francia)
+        "Lisbona": "#D50000"       # Rosso Fuoco vivido
     }
     
     # Ritorna il colore associato o un grigio di fallback per sicurezza
@@ -178,7 +179,6 @@ with col_t3:
 
 st.markdown("---")
 
-
 # ==========================================
 # 4. GRAFICI DI RELAZIONE (CON ASSI CONFIGURATI)
 # ==========================================
@@ -220,7 +220,6 @@ else:
     st.dataframe(df_filtered, use_container_width=True)
 
 st.markdown("---")
-
 
 # ==========================================
 # 5. MODALITÀ CONFRONTO MULTI-CITTÀ (COLORI COERENTI)
