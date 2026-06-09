@@ -1,7 +1,10 @@
-Specifica Tecnica: Architettura della Pipeline Joivy Analytics
+### Specifica Tecnica
+(*banalmente rigurgitata da Notebook LM*)
+## Architettura della Pipeline Joivy Analytics
+
 <br>
-<br>
-1. Introduzione e Finalità del Sistema
+
+### 1. Introduzione e Finalità del Sistema 
 
 Nel competitivo mercato del co-living, l'asimmetria informativa rappresenta il principale ostacolo a una strategia di pricing dinamica. Il progetto Joivy Analytics è stato concepito per eliminare questa barriera, automatizzando la raccolta di dati immobiliari e trasformandoli in un asset informativo pronto per l'analisi statistica. L'architettura non si limita al semplice recupero di informazioni, ma implementa un workflow di trasformazione che converte dati web non strutturati in metriche azionabili per la Business Intelligence.
 
@@ -13,9 +16,10 @@ Per garantire scalabilità e resilienza, il sistema è stato ingegnerizzato segu
 * to_dataframe: Il modulo di strutturazione e persistenza dei dati.
 
 Questa separazione delle responsabilità assicura che l'integrità del dato sia preservata lungo l'intero ciclo di vita, dal rendering nel browser alla persistenza nel database analitico.
+
 <br>
-<br>
-2. Architettura dell'Estrazione: Scraping Multi-Livello e Asincrono
+
+### 2. Architettura dell'Estrazione: Scraping Multi-Livello e Asincrono
 
 L'efficienza dell'acquisizione dati poggia su un modello a due stadi che bilancia determinismo operativo e performance di rete.
 
@@ -41,9 +45,10 @@ La stabilità è garantita da parametri di runtime rigorosi:
 Race Condition Prevention
 
 Data la natura concorrente del processo, l'integrità del dizionario globale RECORDS_DATA è protetta da un asyncio.Lock (data_lock). Questo meccanismo di mutua esclusione assicura che la scrittura dei dati estratti avvenga in modo atomico, prevenendo corruzioni durante l'accesso simultaneo da parte dei worker.
+
 <br>
-<br>
-3. Logica di Data Wrangling e Pulizia Semantica
+
+### 3. Logica di Data Wrangling e Pulizia Semantica
 
 Il valore strategico della pipeline risiede nel suo layer di Data Quality (DQ) Gate. Ogni record grezzo deve superare una serie di controlli di conformità prima di essere integrato nel dataset finale.
 
@@ -68,9 +73,10 @@ Per consentire operazioni matematiche, i dati vengono convertiti nei seguenti ti
 * baths (int): Derivato dall'indice info[2] dopo la pulizia.
 * mq (float): Conversione della superficie previa rimozione dell'unità di misura.
 * has_large_bed (bool): Mapping logico (False per "Singolo", True per altri formati).
+
 <br>
-<br>
-4. Strategia di Persistenza e Strutturazione dei Dati
+
+### 4. Strategia di Persistenza e Strutturazione dei Dati
 
 La trasformazione finale converte il dizionario nidificato in un DataFrame bidimensionale. Durante questa fase di Flattening, l'identificativo univoco id_room viene generato tramite string slicing (link[-13:-1]) dall'URL della pagina, garantendo la tracciabilità di ogni unità.
 
@@ -84,11 +90,11 @@ Schema dei Dati Finale
 - has_large_bed: bool   (Presenza dotazioni premium)
 - baths: int            (Numero di servizi igienici)
 
-
 Il sistema predilige il formato Parquet con motore pyarrow. Rispetto al CSV tradizionale, Parquet offre una compressione colonnare superiore e tempi di caricamento ridotti del 70-80% nella dashboard Streamlit, ottimizzando l'esperienza dell'utente finale.
+
 <br>
-<br>
-5. Visualizzazione Analitica: Dashboard Streamlit e Plotly
+
+### 5. Visualizzazione Analitica: Dashboard Streamlit e Plotly
 
 L'interfaccia di visualizzazione trasforma i dati grezzi in insight competitivi attraverso un'interfaccia reattiva e statisticamente rigorosa.
 
