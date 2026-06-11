@@ -113,7 +113,7 @@ elif bed_choice == "Letto singolo":
 # ==========================================
 # 3. TABELLE STATISTICHE
 # ==========================================
-st.header("Statistiche (Filtrate vs Globale)")
+st.header("Statistiche (Filtrate vs Globali)")
 
 # 1. Recuperiamo la mappa dei colori per la città selezionata
 mappa_colori_completa = get_country_color_map([selected_city])
