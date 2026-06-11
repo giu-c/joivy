@@ -216,7 +216,7 @@ else:
         )
         st.plotly_chart(fig_price_mq, use_container_width=True)
 
-    st.subheader("📋 Elenco delle stanze selezionate")
+    st.subheader(f"📋 Elenco delle stanze filtrate ({len(df_filtered)} in totale)")
     st.dataframe(df_filtered, use_container_width=True)
 
 st.markdown("---")
